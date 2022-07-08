@@ -3,6 +3,11 @@
     src: url(./fonts/Lato/Lato-Regular.ttf) format('truetype');
 }
 
+:root {
+    --theme-color: rgba(45, 175, 132, 0.699);
+    --background-color: rgba(161, 161, 161, 0.26);
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -15,23 +20,29 @@ body {
     width: 25px;
 }
 
+.sidebar .svg {
+    filter: invert(100%);
+}
+
 .profile-pic {
     width: 50px;
+    border-radius: 50%;
 }
 
 .profile-pic-large {
     width: 75px;
+    border-radius: 50%;
 }
 
 .container {
     display: grid;
-    grid-template-columns: 1fr 5fr;
-    grid-template-rows: 1fr 5fr;
+    grid-template-columns: 225px 1fr;
+    grid-template-rows: 200px 1fr;
 }
 
 .sidebar {
     grid-row: 1/-1;
-    background-color: rgba(54, 199, 151, 0.5);
+    background-color: var(--theme-color);
 }
 
 .header {
@@ -39,6 +50,7 @@ body {
     grid-template-columns: 5fr 2fr;
     justify-items: center;
     align-items: center;
+    box-shadow: 0 10px 10px var(--background-color);
 }
 
 .search {
@@ -52,7 +64,7 @@ body {
     flex: 1;
     border-radius: 2rem;
     border: none;
-    background-color: rgba(161, 161, 161, 0.26);
+    background-color: var(--background-color);
     height: 2rem;
     padding-left: 1rem;
     font-size: 1.2rem;
@@ -62,8 +74,78 @@ body {
     outline: none;
 }
 
+.header .profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.opening-message {
+    width: 75%;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 20px;
+    justify-content: baseline;
+    align-items: center;
+}
+
+.opening-message img {
+    grid-row: span 2;
+    align-self: center;
+}
+
+.opening-message .current-user {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.options button {
+    background-color: var(--theme-color);
+    border: none;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    margin-right: 15px;
+    border-radius: 50px;
+    color: white;
+}
+
+.sidebar {
+    display: grid;
+    grid-auto-rows: max-content;
+    gap: 20px;
+    justify-items: start;
+    align-items: center;
+    color: white;
+}
+
+.sidebar > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar .title ~ div {
+    padding-left: 20px;
+    gap: 20px;
+    font-size: 1.3rem;
+}
+
+.sidebar .title {
+    font-size: 1.5rem;
+    justify-self: center;
+}
+
+.title img {
+    width: 50px;
+}
+
+
+
+
+
 .body {
-    background-color: rgba(185, 37, 136, 0.5);
+    background-color: var(--background-color);
 }
 
 
