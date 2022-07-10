@@ -5,9 +5,20 @@
     src: url(./fonts/Lato/Lato-Regular.ttf) format('truetype');
 }
 
-:root {
-    --theme-color: rgba(45, 175, 132, 0.699);
+:root.light {
+    --theme-color: rgb(45, 175, 132);
     --background-color: rgba(161, 161, 161, 0.26);
+    --dark-light: rgb(255, 255, 255);
+    --text: black;
+    --invert: invert(0%);
+}
+
+:root.dark {
+    --theme-color: rgb(45, 175, 132);
+    --background-color: #181818;
+    --dark-light: #404040;
+    --text: white;
+    --invert: invert(100%);
 }
 
 body {
@@ -18,8 +29,12 @@ body {
     font-size: 1.2rem;
 }
 
-.svg {
+.svg:not(.night-mode) {
     width: 25px;
+    filter: var(--invert);
+    -webkit-transition: filter 1000ms linear;
+    -ms-transition: filter 1000ms linear;
+    transition: filter 1000ms linear;
 }
 
 .container {
@@ -42,11 +57,24 @@ body {
     justify-items: center;
     align-items: center;
     box-shadow: 0 10px 10px var(--background-color);
+    background-color: var(--dark-light);
+    color: var(--text);
+    user-select: none;
+
+    -webkit-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
 }
 
 .profile-pic {
     width: 50px;
     border-radius: 50%;
+}
+
+.night-mode.active { /*sets moon icon to white when in dark mode*/
+    stroke: white;
+    fill: white;
+    color: white;
 }
 
 .profile-pic-large {
@@ -69,6 +97,11 @@ body {
     height: 2rem;
     padding-left: 1rem;
     font-size: 1.2rem;
+    color: var(--text);
+
+    -webkit-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
 }
 
 .search input:focus {
@@ -109,6 +142,10 @@ body {
     margin-right: 15px;
     border-radius: 50px;
     color: white;
+
+    -webkit-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
 }
 
 
@@ -122,6 +159,10 @@ body {
     justify-items: start;
     align-items: center;
     color: white;
+
+    -webkit-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
 }
 
 .sidebar > div {
@@ -130,10 +171,15 @@ body {
     justify-content: center;
 }
 
+.sidebar .title ~ div:hover, .sidebar .title ~ div:focus {
+    transform: translateX(0.25rem);
+}
+
 .sidebar .title ~ div {
     padding-left: 20px;
     gap: 20px;
     font-size: 1.3rem;
+    cursor: pointer;
 }
 
 .sidebar .title {
@@ -142,7 +188,7 @@ body {
     justify-self: center;
 }
 
-.title img {
+.title img.main {
     width: 50px;
 }
 
@@ -160,6 +206,11 @@ body {
     grid-template-columns: 4fr 300px;
     grid-template-rows: repeat(2,min-content);
     gap: 20px;
+    color: var(--text);
+
+    -webkit-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
 }
 
 .body .projects {
@@ -177,13 +228,21 @@ body {
     font-size: 1.3rem;
 }
 
-.projects .card {
+.card {
     padding: 10px;
     border-left: var(--theme-color) 10px solid;
     border-radius: 10px;
-    background-color: white;
+    background-color: var(--dark-light);
     box-shadow: 5px 5px 5px var(--background-color);
     display: grid;
+
+    -webkit-transition: background-color 1000ms linear, box-shadow 1000ms linear;
+    -ms-transition: background-color 1000ms linear, box-shadow 1000ms linear;
+    transition: background-color 1000ms linear, box-shadow 1000ms linear;
+}
+
+.projects .card:hover {
+    transform: translateY(-0.25rem);
 }
 
 .projects .card .title {
@@ -205,11 +264,19 @@ body {
 }
 
 .tile {
-	background-color: white;
+	background-color: var(--dark-light);
 	padding: 10px;
 	box-shadow: 5px 5px 5px var(--background-color);
 	border-radius: 10px;
 	border-top: 1px var(--background-color) solid;
+
+    -webkit-transition: background-color 1000ms linear, box-shadow 1000ms linear;
+    -ms-transition: background-color 1000ms linear, box-shadow 1000ms linear;
+    transition: background-color 1000ms linear, box-shadow 1000ms linear;
+}
+
+.tile:hover {
+    transform: translateY(-0.25rem);
 }
 
 .trending .tile {
