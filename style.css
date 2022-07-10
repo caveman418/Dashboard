@@ -21,6 +21,10 @@
     --invert: invert(100%);
 }
 
+* {
+    user-select: none;
+}
+
 body {
     margin: 0;
     padding: 0;
